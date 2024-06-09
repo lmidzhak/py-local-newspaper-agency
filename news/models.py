@@ -13,7 +13,7 @@ class Topic(models.Model):
 
 
 class Redactor(AbstractUser):
-    years_of_experience = models.IntegerField()
+    years_of_experience = models.IntegerField(blank=True, null=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 
@@ -29,3 +29,12 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class NewspaperEdition(models.Model):
+    published_date = models.DateField()
+    articles = models.ManyToManyField(Article, related_name="editions")
+    price = models.FloatField()
+
+    def __str__(self):
+        return f"Local newspaper edition published {self.published_date}"
