@@ -32,9 +32,10 @@ class Article(models.Model):
 
 
 class NewspaperEdition(models.Model):
-    published_date = models.DateField()
+    edition = models.IntegerField(default=1)
+    published_date = models.DateField(auto_now=True)
     articles = models.ManyToManyField(Article, related_name="editions")
     price = models.FloatField()
 
     def __str__(self):
-        return f"Local newspaper edition published {self.published_date}"
+        return f"Local newspaper edition number {self.edition}, published {self.published_date}"
