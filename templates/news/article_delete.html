@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Delete this article?</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes" class="btn btn-danger">
+    <a href="{% url 'news:article-detail' pk=article.id %}" class="btn btn-info">Cancel</a>
+  </form>
+{% endblock %}
