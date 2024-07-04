@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  
+    <h1 id="page_title" class="container text-center" style="padding-bottom: 30px; padding-top: 30px">
+      Topic List          
+    </h1>
+    <div class="row">
+      <div class="col">
+        <a href="{% url 'news:topic-create' %}" class="btn btn-primary link-to-page">
+          Create new topic
+        </a>
+      </div>
+      <div>
+        <form action="" method="get" class="form-inline">
+          {{ search_form|crispy }}
+          <input class="btn btn-secondary" type="submit" value="🔍">
+        </form>
+      </div>
+    </div>
+    
+  <br>
+  {% if topic_list %}
+    <table class="table table-dark table-striped">
+      <tr>
+        <th>ID Number</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+        {% for topic in topic_list %}
+       <tr>
+          <td>
+              {{ topic.id }}
+          </td>
+          <td>
+                {{ topic.name }}
+              </a>
+          </td>
+          <td>
+            <a href="{% url 'news:topic-update' pk=topic.id %}">
+                Update
+            </a>
+          </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'news:topic-delete' pk=topic.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <h3 class="container text-center" style="padding-top: 40px">There are no such topics defined in Local Newspaper.</h3>
+  {% endif %}
+{% endblock %}

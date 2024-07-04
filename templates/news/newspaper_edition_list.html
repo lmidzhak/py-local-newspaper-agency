@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  
+    <h1 id="page_title" class="container text-center" style="padding-bottom: 30px; padding-top: 30px">
+      Newspaper Edition List          
+    </h1>
+    <div class="row">
+      <div class="col">
+        <a href="{% url 'news:newspaper-edition-create' %}" class="btn btn-primary link-to-page">
+          Create new newspaper edition
+        </a>
+      </div>
+      <div>
+        <form action="" method="get" class="form-inline">
+          {{ search_form|crispy }}
+          <input class="btn btn-secondary" type="submit" value="🔍">
+        </form>
+      </div>
+    </div>
+    
+  <br>
+  {% if newspaper_edition_list %}
+    <table class="table table-dark table-striped">
+      <tr>
+        <th>ID Number</th>
+        <th>Edition</th>
+        <th>Published date</th>
+        <th>Articles</th>
+        <th>Price</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+        {% for newspaper_edition in newspaper_edition_list %}
+       <tr>
+         <td>
+           {{ newspaper_edition.id }}            
+         </td>
+         <td>
+           <a href="{% url 'news:newspaper-edition-detail' pk=newspaper_edition.id %}">
+             {{ newspaper_edition.edition }}
+           </a>
+         </td>     
+         <td>
+           {{ newspaper_edition.published_date }}
+         </td>
+         <td>
+                {% for article in newspaper_edition.articles.all %}
+                  <li>{{ article.title }}</li>
+                  {% endfor %}
+          </td>
+         <td>
+                {{ newspaper_edition.price }}
+          </td>
+          <td>
+            <a href="{% url 'news:newspaper-edition-update' pk=newspaper_edition.id %}">
+                Update
+            </a>
+          </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'news:newspaper-edition-delete' pk=newspaper_edition.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <h3 class="container text-center" style="padding-top: 40px">There are no newspaper editions published in Local Newspaper.</h3>
+  {% endif %}
+{% endblock %}
