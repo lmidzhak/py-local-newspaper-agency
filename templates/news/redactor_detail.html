@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+  <div class="container text-center" style="padding-top: 20px; padding-bottom: 20px">
+    <h1>
+      Redactor info    
+    </h1>
+  </div>
+
+  <h4 class="text-center"><strong>Username:</strong> {{ redactor.username }}</h4>
+  <h4 class="text-center"><strong>First name:</strong> {{ redactor.first_name }}</h4>
+  <h4 class="text-center"><strong>Last name:</strong> {{ redactor.last_name }}</h4>
+  <h4 class="text-center"><strong>Years of experience:</strong> {{ redactor.years_of_experience }}</h4>
+  <h4 class="text-center"><strong>Is staff:</strong> {{ redactor.is_staff }}</h4>
+  <h4 class="text-center"><strong>E-mail:</strong> {{ redactor.email }}</h4>
+
+  <div class="ml-3" style="padding: 0 50px">
+    <h4>Articles:</h4>
+
+    {% for article in redactor.articles.all %}
+        <hr>
+      <h5><strong>Article Id:</strong> {{article.id}}</h5>
+      <h5><strong>Title:</strong> {{ article.title }}</h5>
+      <h5>Topics:</h5>
+      {% for topic in article.topics.all %}        
+        <li>{{ topic.name }}</li>
+      {% endfor %}
+      <hr>
+      
+    {% empty %}
+      <p>No Articles!</p>
+    {% endfor %}
+  </div>
+  <div class="container-fluid align-self-center">
+    <a href="{% url 'news:redactor-delete' pk=redactor.id %}" class="btn btn-danger link-to-page">
+      Delete redactor
+    </a>
+
+    <a href="{% url 'news:redactor-update' pk=redactor.id %}" class="btn btn-secondary link-to-page">
+      Update redactor info
+    </a>
+  </div>
+  
+{% endblock %}
