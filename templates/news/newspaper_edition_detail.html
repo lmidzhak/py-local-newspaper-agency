@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+  <div class="container text-center" style="padding-top: 20px; padding-bottom: 20px">
+    <h1>
+      Newspaper edition info    
+    </h1>
+  </div>
+  
+  <h2 class="text-left" style="font-size: 25px"> {{ newspaper_edition }}</h2>
+  <h4>Price: {{ newspaper_edition.price }}</h4>
+  
+
+
+
+  <div class="container text-left" style="padding-left: 50px; padding-bottom: 40px">
+    <h4>Articles:</h4>
+      {% for article in newspaper_edition.articles.all %}
+        <li>{{ article.title }}</li>     
+      
+      {% empty %}
+      <p>No Articles!</p>
+     {% endfor %}  
+  </div>
+
+  <div class="container justify-content-center">
+    <a href="{% url 'news:newspaper-edition-delete' pk=newspaper_edition.id %}" class="btn btn-danger link-to-page">
+      Delete newspaper edition
+    </a>
+
+    <a href="{% url 'news:newspaper-edition-update' pk=newspaper_edition.id %}" class="btn btn-secondary link-to-page">
+      Update newspaper edition info
+    </a>
+  </div>
+  
+{% endblock %}

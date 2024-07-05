@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  
+  <h1 id="page_title" class="text-center" style="padding-bottom: 30px; padding-top: 30px">
+    Redactor List      
+  </h1>
+  <div class="row">
+      <div class="col">
+      <a href="{% url 'news:redactor-create' %}" class="btn btn-primary link-to-page">
+        Create new redactor
+      </a>
+    </div>
+    
+    <div>
+      <form action="" method="get" class="form-inline">
+      {{ search_form|crispy }}
+        <input class="btn btn-secondary" type="submit" value="🔍">
+      </form>
+    </div>
+  </div>
+   
+  
+  {% if redactor_list %}
+    <table class="table table-dark table-striped">
+      <tr>
+        <th>Number</th>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Years of experience</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+        <br>
+        {% for redactor in redactor_list %}
+       <tr>
+          <td>
+            {{ redactor.id }}
+          </td>
+          <td><a href="{{ redactor.get_absolute_url }}">
+            {{ redactor.username }} {% if user == redactor %} (Me){% endif %}</a>
+          </td>
+          <td>
+           {{ redactor.first_name }}
+         </td>
+         <td>
+                {{ redactor.last_name }}
+          </td>
+         <td>
+                {{ redactor.years_of_experience }}
+          </td>
+          <td>
+            <a href="{% url 'news:redactor-update' pk=redactor.id %}">
+                Update
+            </a>
+          </td>
+            <td>
+              <a style="color: red" href="{% url 'news:redactor-delete' pk=redactor.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <h3 class="container text-center" style="padding-top: 40px">There are no such redactors defined in Local Newspaper.</h3>
+  {% endif %}
+{% endblock %}

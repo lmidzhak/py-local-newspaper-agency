@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+  <div class="container text-center" style="padding-top: 20px; padding-bottom: 20px">
+    <h1>
+      Article info    
+    </h1>
+  </div>
+
+  <h2 class="text-center">Title: {{ article.title }}</h2>  
+  <div class="container text-left" style="display: flex; flex-direction: row; padding: 0">
+    <h4>Redactors:</h4>
+       {% for redactor in article.redactors.all %}       
+          <li style="padding: 5px 10px">{{ redactor.first_name }} {{ redactor.last_name }}</li>
+     {% empty %}
+     <p>No Redactors!</p>
+     {% endfor %}
+  </div>
+  <div class="container text-left" style="display: flex; flex-direction: row; padding: 0">
+    <h4>Topics:
+      {% for topic in article.topics.all %}      
+    </h4>
+        <li style="padding: 5px 10px">{{ topic.name }}</li>
+  {% endfor %}
+  </div>
+  
+  <h4 class="text-left" style="font-size: 25px">Content:</h4>
+  <p>{{ article.content }}</p>
+  
+  <hr>
+  
+  <div class="container centered" style="margin: 30px 0">
+    <a href="{% url 'news:article-delete' pk=article.id %}" class="btn btn-danger link-to-page">
+      Delete article
+    </a>
+
+    <a href="{% url 'news:article-update' pk=article.id %}" class="btn btn-secondary link-to-page">
+      Update article info
+    </a>
+  </div>
+
+  
+{% endblock %}

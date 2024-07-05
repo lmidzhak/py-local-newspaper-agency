@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1 id="page_title" class="text-center" style="padding-bottom: 30px; padding-top: 30px"> Article list</h1>
+ 
+  <div class="row">
+    <div class="col">
+      <a href="{% url 'news:article-create' %}" class="btn btn-primary link-to-page">
+        Create new article
+      </a>
+    </div>
+    <div>
+       <form method="get" action="" class="form-inline">
+        {{ search_form|crispy }}
+        <input class="btn btn-secondary" type="submit" value="🔍">
+       </form>  
+    </div>   
+  </div>
+  <br>    
+  <div>
+    {% if article_list %}
+    <table class="table table-dark table-striped">
+      <tr>
+        <th>ID Number</th>
+        <th>Title</th>
+        <th>Topics</th>
+        <th>Redactors</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+        {% for article in article_list %}
+       <tr>
+          <td>
+            {{ article.id }}
+          </td>
+         <td>            
+           <a href="{% url 'news:article-detail' pk=article.id %}">{{ article.title }}</a>
+          </td>
+          <td>
+            {% for topic in article.topics.all %}
+              {{  topic.name }} <br>
+            {% endfor %}
+          </td>
+          <td>
+            {% for redactor in article.redactors.all %}
+              {{ redactor.first_name }} {{ redactor.last_name }} <br>
+            {% endfor %}
+         </td>
+         
+          <td>
+            <a href="{% url 'news:article-update' pk=article.id %}">
+                Update
+            </a>
+          </td>
+            <td>
+              <a style="color: red" href="{% url 'news:article-delete' pk=article.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>There are no article in this newspaper</p>
+  {% endif %}
+  </div>
+ 
+  
+{% endblock %}

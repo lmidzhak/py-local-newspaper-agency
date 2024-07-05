@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+  <div class="text-center" style="padding-top: 20px; padding-bottom: 20px">
+    <h1> Newspaper Website</h1>
+  </div>
+  
+  <div class="text-center" style="padding-top: 20px; padding-bottom: 20px">
+    <h2>Welcome to our local newspaper website! </h2>
+  </div>
+  
+
+
+  <hr>
+
+
+
+    <section class="text-center" style="padding-top: 90px; padding-bottom: 90px">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-5 mb-lg-0 position-relative">
+          <h2 class="text-primary fw-bold mb-3">{{ num_newspaper_editions }}</h2>
+          <h3 class="fw-normal mb-0">editions</h3>
+          <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
+        </div>
+    
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-5 mb-lg-0 position-relative">
+          <h2 class="text-primary fw-bold mb-3">{{ num_articles }}</h2>
+          <h3 class="fw-normal mb-0">articles</h3>
+          <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
+        </div>
+    
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0 position-relative">
+          <h2 class="text-primary fw-bold mb-3">{{ num_topics }}</h2>
+          <h3 class="fw-normal mb-0">topics</h3>
+          <div class="vr vr-blurry position-absolute my-0 h-100 d-none d-md-block top-0 end-0"></div>
+        </div>
+    
+        <div class="col-lg-3 col-md-6 mb-5 mb-md-0 position-relative">
+          <h2 class="text-primary fw-bold mb-3" >{{ num_redactors }}</h2>
+          <h3 class="fw-normal mb-0">redactors</h3>
+        </div>
+      </div>
+    </section>
+  
+  <hr>
+    <section class="text-center" style="padding-top: 80px">
+      <h2>
+        You have visited this page {{ num_visits }} times
+      </h2>
+    </section>
+      
+   
+{% endblock %}
