@@ -18,10 +18,10 @@ Each redactor can create and publish an Article on certain Topic. Articles can b
 
 Access to all pages, except the main page, requires user authentication.
 A search functionality is provided for:
-Redactors (by username),
-Topics (by name),
-Articles(by title),
-NewspaperEditions(by price).
+* Redactors (by username),
+* Topics (by name),
+* Articles(by title),
+* NewspaperEditions(by price).
 
 ## Additional Features
 
@@ -34,6 +34,8 @@ Use the following credentials to test the application:
 
 ## Installation
 
+```shell
+
 * git clone https://github.com/lmidzhak/py-local-newspaper-agency.git
 * python3 -m venv venv (mac) 
 * python -m venv venv (win)
@@ -41,7 +43,7 @@ Use the following credentials to test the application:
 * venv\Scripts\activate(win)
 * pip install -r requirements.txt
 * python manage.py runserver
-
+```
 
 ## Project pages Demo
 <img alt="Index_page.png" height="500" src="static/images/Index_page.png" title="LocalNewspaper DB Structure" width="860"/>
