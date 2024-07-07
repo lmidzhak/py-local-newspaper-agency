@@ -4,6 +4,8 @@
 
 This project simulates the basic structure of Newspaper with NewspaperEdition, Article, Redactor and Topic models
 
+
+
 Link to DB Structure diagram: https://dbdiagram.io/d/668573b79939893daef5a8ed
 <img alt="img.png" height="500" src="static/images/img.png" title="LocalNewspaper DB Structure" width="860"/>
 
@@ -44,6 +46,9 @@ Use the following credentials to test the application:
 * pip install -r requirements.txt
 * python manage.py runserver
 ```
+
+# Here is a link to the project on Render: 
+### **https://py-local-newspaper-agency.onrender.com/**
 
 ## Project pages Demo
 <img alt="Index_page.png" height="500" src="static/images/Index_page.png" title="LocalNewspaper DB Structure" width="860"/>
