@@ -1,10 +1,10 @@
 asgiref==3.8.1
 black==24.4.2
-bootstrap4==0.1.0
+bootstrap4
 click==8.1.7
 colorama==0.4.6
-crispy-bootstrap4==2022.1
-crispy-bootstrap5==2024.2
+crispy-bootstrap4
+crispy-bootstrap5
 dj-database-url==2.2.0
 Django==4.1
 django-crispy-forms==1.14.0
