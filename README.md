@@ -32,7 +32,7 @@ Pagination is implemented on all pages to improve navigation and usability. Comp
 
 Use the following credentials to test the application:
 
-**Login:** admin Password: 1qazcde3
+**Login:** admin Password: News!Qazcde3
 
 ## Installation
 
